@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+/** Importing CSS and Images/SVG's */
 import './App.css';
+
+/** Importing Components */
+import Homepage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+        <Route path="/" exact component={Homepage} />
+
+        <Route path="/register" exact component={RegisterPage} />
+
+        <Route path="/login" exact component={LoginPage} />
+
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(connect(null, {})(App));
